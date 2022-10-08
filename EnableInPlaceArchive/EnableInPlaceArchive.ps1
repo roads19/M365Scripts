@@ -15,14 +15,15 @@ if ( Connect-ExchangeOnline )
     Write-Output "Connected to Exchange Online"
 }
 
-#In this section, type the "Display Name" of the O365 user
+#In this section, you must specify the mailbox you want to enable in-place archive
 
-$mailuser= "Display Name"
+$mailuser= Read-Host -Prompt 'Enter the mailbox you want to enable in-place archive.'
 
 
 #In this section, you can define when mailbox items move to the archive by changing the Retention Tag day count.
+$RetentionDay= Read-Host -Prompt 'Specify the number of days the items will be moved to the archive.'
 
-if ( New-RetentionPolicyTag "Archive365Tag" -Type All -RetentionEnabled $true -AgeLimitForRetention 365 -RetentionAction MovetoArchive )
+if ( New-RetentionPolicyTag "ArchiveTag$RetentionDay" -Type All -RetentionEnabled $true -AgeLimitForRetention $RetentionDay -RetentionAction MovetoArchive )
 {
     Write-Output "The Retention Tag has been created successfully."
 }
@@ -31,7 +32,7 @@ else {
 }
 
 #This command creates a new Retention policy which includes the Retention Tag we defined above.
-if ( New-RetentionPolicy "Archive365Policy" -RetentionPolicyTagLinks "Archive365Tag" )
+if ( New-RetentionPolicy "ArchivePolicy$RetentionDay" -RetentionPolicyTagLinks "ArchiveTag$RetentionDay" )
 {
     Write-Output "The retention policy has been created successfully."
 }
@@ -40,7 +41,7 @@ else {
 }
 
 #Assinging the Retention Policy to the specified user.
-if ( Set-Mailbox $mailuser -RetentionPolicy "Archive365Policy" )
+if ( Set-Mailbox $mailuser -RetentionPolicy "ArchivePolicy$RetentionDay" )
 {
     Write-Output "Retention policy assigned to user."
 }

@@ -1,5 +1,7 @@
-When you run the EnableInPlaceArchive.ps1 script, it prompts you to log in to Exchange Online with your M365 Admin account.
+When you run the EnableInPlaceArchive.ps1 script, it prompts you to log in to Exchange Online with your M365 Administrator account.
 
-In the script, you must specify the Display Name of the user you want to activate the archive feature. The script activates the user's online archive feature to move e-mails older than one year into the archive.
+After that, you must specify the mailbox for which you want to enable the archive feature.
 
-If you want, you can change the number of days for the items to be moved to the archive in the Retention Tag section.
+Finally, you must enter the number of days the items will be moved to the archive.
+
+Next, the script enables the user's online archive and it moves items to archive according to the retention policy you specified.
