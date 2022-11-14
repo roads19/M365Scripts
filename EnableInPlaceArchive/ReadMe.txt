@@ -1,4 +1,6 @@
-When you run the EnableInPlaceArchive.ps1 script, it prompts you to log in to Exchange Online with your M365 Administrator account.
+Please run Powershell as Administrator and go to file path which you keep EnableInPlaceArchive.ps1 file.
+
+Once you run the script as typing .\EnableInPlaceArchive.ps1 , it prompts you to log in to Exchange Online with your M365 Administrator account.
 
 After that, you must specify the mailbox you want to enable the archive feature.
 
