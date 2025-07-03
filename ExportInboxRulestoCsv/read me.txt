@@ -1,0 +1,36 @@
+This PowerShell script exports all Inbox rules from all user mailboxes in Exchange Online to a CSV file.
+
+Features
+Retrieves all user mailboxes
+
+Lists each mailbox’s Inbox rules, including:
+
+Rule name
+
+Enabled/disabled status
+
+Priority
+
+Actions such as move, delete, forward, redirect
+
+Outputs the results to a CSV file on the Desktop
+
+Usage
+Connect to Exchange Online if you haven’t already:
+
+powershell
+Copy
+Edit
+Connect-ExchangeOnline
+Run the script:
+
+powershell
+Copy
+Edit
+.\inboxrules.ps1
+The script creates a file called ExchangeOnline_InboxRules.csv on your Desktop.
+
+Requirements
+Exchange Online Management PowerShell module
+
+Appropriate permissions to view mailbox rules (e.g. Global admin)
